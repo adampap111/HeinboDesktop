@@ -1,0 +1,194 @@
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:Data="clr-namespace:Zza.Data;assembly=Zza.Data"
+             xmlns:conv="clr-namespace:HeinboDesktop.Converters"
+             x:Class="HeinboDesktop.Customers.AddEditCustomerView"
+             mc:Ignorable="d"
+             d:DesignHeight="300"
+             d:DesignWidth="300">
+    <UserControl.Resources>
+        <conv:NegatableBooleanToVisibilityConverter x:Key="VisConverter" />
+        <conv:NegatableBooleanToVisibilityConverter x:Key="NegVisConverter"
+                                                    Negate="True" />
+        <Style TargetType="TextBox">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError"
+                         Value="true">
+                    <Setter Property="ToolTip"
+                            Value="{Binding RelativeSource={x:Static RelativeSource.Self}, 
+                                    Path=(Validation.Errors).CurrentItem.ErrorContent}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+
+        <Grid x:Name="grid1"
+              HorizontalAlignment="Left"
+              DataContext="{Binding Customer}"
+              Margin="10,10,0,0"
+              VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Label Content="Termék név:"
+                   Grid.Column="0"
+                   HorizontalAlignment="Left"
+                   Margin="3"
+                   Grid.Row="0"
+                   VerticalAlignment="Center" />
+            <TextBox x:Name="productNameTextBox"
+                     Grid.Column="1"
+                     HorizontalAlignment="Left"
+                     Height="23"
+                     Margin="3"
+                     Grid.Row="0"
+                     Text="{Binding ProductName, ValidatesOnNotifyDataErrors=True}"
+                     VerticalAlignment="Center"
+                     Width="120" />
+            <Label Content="Kategória: "
+                   Grid.Column="0"
+                   HorizontalAlignment="Left"
+                   Margin="3"
+                   Grid.Row="1"
+                   VerticalAlignment="Center" />
+            <TextBox x:Name="CategoryTextbox"
+                     Grid.Column="1"
+                     HorizontalAlignment="Left"
+                     Height="23"
+                     Margin="3"
+                     Grid.Row="1"
+                     Text="{Binding Category, ValidatesOnNotifyDataErrors=True}"
+                     VerticalAlignment="Center"
+                     Width="120" />
+            <Label Content="Kisker ár:"
+                   Grid.Column="0"
+                   HorizontalAlignment="Left"
+                   Margin="3"
+                   Grid.Row="2"
+                   VerticalAlignment="Center" />
+            <TextBox x:Name="RetailPriceTextbox"
+                     Grid.Column="1"
+                     HorizontalAlignment="Left"
+                     Height="23"
+                     Margin="3"
+                     Grid.Row="2"
+                     Text="{Binding RetailPrice, ValidatesOnNotifyDataErrors=True}"
+                     VerticalAlignment="Center"
+                     Width="120" />
+            <Label Content="Beszállítói ár:"
+                   Grid.Column="0"
+                   HorizontalAlignment="Left"
+                   Margin="3"
+                   Grid.Row="3"
+                   VerticalAlignment="Center" />
+            <TextBox x:Name="supplerPriceTextbox"
+                     Grid.Column="1"
+                     HorizontalAlignment="Left"
+                     Height="23"
+                     Margin="3"
+                     Grid.Row="3"
+                     Text="{Binding SupplierPrice, ValidatesOnNotifyDataErrors=True}"
+                     VerticalAlignment="Center"
+                     Width="120" />
+            <Label Content="Nagyker ár:"
+                Grid.Column="0"
+                HorizontalAlignment="Left"
+                Margin="3,42,0,-36"
+                Grid.Row="3"
+                VerticalAlignment="Center" RenderTransformOrigin="0.494,1.769" />
+            <TextBox x:Name="wholeSalePriceTextbox"
+                Grid.Column="1"
+                HorizontalAlignment="Left"
+                Height="24"
+                Margin="5,44,0,-36"
+                Grid.Row="3"
+                Text="{Binding WholeSalePrice, ValidatesOnNotifyDataErrors=True}"
+                VerticalAlignment="Center"
+                Width="120" />
+            <Label Content="Márka:"
+                Grid.Column="0"
+                HorizontalAlignment="Left"
+                Margin="3,73,0,-67"
+                Grid.Row="3"
+                VerticalAlignment="Center" RenderTransformOrigin="0.494,1.769" />
+            <Label Content="Méret:"
+                Grid.Column="0"
+                HorizontalAlignment="Left"
+                Margin="3,104,0,-98"
+                Grid.Row="3"
+                VerticalAlignment="Center" RenderTransformOrigin="0.494,1.769" />
+            <Label Content="Alkategória:"
+                Grid.Column="0"
+                HorizontalAlignment="Left"
+                Margin="3,135,0,-129"
+                Grid.Row="3"
+                VerticalAlignment="Center" RenderTransformOrigin="0.494,1.769" />
+            <TextBox x:Name="phoneTextBox_Copy1"
+                Grid.Column="1"
+                HorizontalAlignment="Left"
+                Height="24"
+                Margin="5,75,0,-67"
+                Grid.Row="3"
+                Text="{Binding Brand, ValidatesOnNotifyDataErrors=True}"
+                VerticalAlignment="Center"
+                Width="120" />
+            <TextBox x:Name="phoneTextBox_Copy2"
+                Grid.Column="1"
+                HorizontalAlignment="Left"
+                Height="24"
+                Margin="3,106,0,-98"
+                Grid.Row="3"
+                Text="{Binding Size, ValidatesOnNotifyDataErrors=True}"
+                VerticalAlignment="Center"
+                Width="120" />
+            <TextBox x:Name="phoneTextBox_Copy3"
+                Grid.Column="1"
+                HorizontalAlignment="Left"
+                Height="24"
+                Margin="3,137,0,-129"
+                Grid.Row="3"
+                Text="{Binding Subcategory, ValidatesOnNotifyDataErrors=True}"
+                VerticalAlignment="Center"
+                Width="120" />
+        </Grid>
+        <Grid Grid.Row="1">
+            <Button Content="Mentés"
+                    Command="{Binding SaveCommand}"
+                    Visibility="{Binding EditMode, Converter={StaticResource VisConverter}}"
+                    HorizontalAlignment="Left"
+                    Margin="25,136,0,-128"
+                    VerticalAlignment="Top"
+                    Width="75" RenderTransformOrigin="0.467,1.25" />
+            <Button Content="Hozzáad"
+                    Command="{Binding SaveCommand}"
+                    Visibility="{Binding EditMode, Converter={StaticResource NegVisConverter}}"
+                    HorizontalAlignment="Left"
+                    Margin="25,136,0,-127"
+                    VerticalAlignment="Top"
+                    Width="75" />
+            <Button Content="Vissza"
+                    Command="{Binding CancelCommand}"
+                    HorizontalAlignment="Left"
+                    Margin="160,136,0,-126"
+                    VerticalAlignment="Top"
+                    Width="75" />
+        </Grid>
+
+    </Grid>
+</UserControl>
