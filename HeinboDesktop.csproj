@@ -24,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -77,26 +78,62 @@
     </ApplicationDefinition>
     <Compile Include="BindableBase.cs" />
     <Compile Include="ContainerHelper.cs" />
-    <Compile Include="Converters\NegatableBooleanToVisibilityConverter.cs" />
-    <Compile Include="Customers\AddEditCustomerView.xaml.cs">
-      <DependentUpon>AddEditCustomerView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Customers\AddEditCustomerViewModel.cs" />
     <Compile Include="Customers\CustomerListView.xaml.cs">
       <DependentUpon>CustomerListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Customers\CustomerListViewModel.cs" />
-    <Compile Include="Customers\SimpleEditableCustomer.cs" />
+    <Compile Include="Customers\CustomerProfile.cs" />
+    <Compile Include="Customers\CustomerProfileView.xaml.cs">
+      <DependentUpon>CustomerProfileView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Customers\CustomerProfileViewModel.cs" />
+    <Compile Include="Orders\OrderProfileView.xaml.cs">
+      <DependentUpon>OrderProfileView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Orders\OrderListView.xaml.cs">
+      <DependentUpon>OrderListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Orders\OrderProfile.cs" />
+    <Compile Include="Orders\OrderListViewModel.cs" />
+    <Compile Include="Orders\OrderProfileViewModel.cs" />
+    <Compile Include="Products\AddEditProductView.xaml.cs">
+      <DependentUpon>AddEditProductView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Products\AddEditProductViewModel.cs" />
+    <Compile Include="Products\ProductListView.xaml.cs">
+      <DependentUpon>ProductListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Products\ProductListViewModel.cs" />
+    <Compile Include="Products\SimpleEditableProduct.cs" />
     <Compile Include="MainWindowViewModel.cs" />
     <Compile Include="RelayCommand.cs" />
-    <Compile Include="Services\CustomersRepository.cs" />
-    <Compile Include="Services\ICustomersRepository.cs" />
-    <Compile Include="ValidatableBindableBase.cs" />
-    <Page Include="Customers\AddEditCustomerView.xaml">
+    <Compile Include="Services\CustomerService.cs" />
+    <Compile Include="Services\ICustomerService.cs" />
+    <Compile Include="Services\IOrderService.cs" />
+    <Compile Include="Services\OrderService.cs" />
+    <Compile Include="Services\ProductService.cs" />
+    <Compile Include="Services\IProductService.cs" />
+    <Page Include="Customers\CustomerListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Customers\CustomerProfileView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Orders\OrderProfileView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Orders\OrderListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Products\AddEditProductView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Customers\CustomerListView.xaml">
+    <Page Include="Products\ProductListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -132,7 +169,9 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
-    <None Include="Properties\DataSources\Zza.Data.Customer.datasource" />
+    <None Include="Properties\DataSources\Heinbo.Data.AspNetUsers.datasource" />
+    <None Include="Properties\DataSources\Heinbo.Data.Order.datasource" />
+    <None Include="Properties\DataSources\Heinbo.Data.Product.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -144,7 +183,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\Zza.Data\Heinbo.Data.csproj">
+    <ProjectReference Include="..\Heinbo.Data\Heinbo.Data.csproj">
       <Project>{bb1e80de-e6d1-4e29-bc2d-db66b81163c5}</Project>
       <Name>Heinbo.Data</Name>
     </ProjectReference>

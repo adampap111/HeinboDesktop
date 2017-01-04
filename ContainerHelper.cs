@@ -6,15 +6,17 @@ using System.Text;
 using System.Threading.Tasks;
 using HeinboDesktop.Services;
 
-namespace HeinboDesktop
+namespace HeinboDesktop 
 {
     public static class ContainerHelper
     {
         private static IUnityContainer _container;
-        static ContainerHelper()
+         static ContainerHelper()
         {
             _container = new UnityContainer();
-            _container.RegisterType<ICustomersRepository, CustomersRepository>(new ContainerControlledLifetimeManager());
+            _container.RegisterType<IProductService, ProductService>(new ContainerControlledLifetimeManager());
+            _container.RegisterType<ICustomerService, CustomerService>(new ContainerControlledLifetimeManager());
+            _container.RegisterType<IOrderService, OrderService>(new ContainerControlledLifetimeManager());
         }
 
         public static IUnityContainer Container

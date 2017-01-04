@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HeinboDesktop.Customers
+namespace HeinboDesktop.Products
 {
-    public class SimpleEditableCustomer : ValidatableBindableBase
+    public class SimpleEditableProduct : BindableBase
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         private int  _id;
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id
         {
             get { return _id; }

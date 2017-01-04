@@ -3,12 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" x:Class="HeinboDesktop.Customers.CustomerListView" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" x:Class="HeinboDesktop.Products.ProductListView" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
-            <ei:CallMethodAction TargetObject="{Binding}" MethodName="GetAspNetUsersList"/>
+            <ei:CallMethodAction TargetObject="{Binding}" MethodName="GetProductList"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid>
@@ -21,7 +21,10 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-
+            <Button Content="Termék hozzáadás"
+                    Command="{Binding AddProductCommand}"
+                    Grid.Column="0"
+                    HorizontalAlignment="Left" />
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Right"
                         Grid.Column="1">
@@ -37,17 +40,17 @@
                   CanUserAddRows="False"
                   Grid.Row="1">
             <DataGrid.Columns>
-
-
-                <DataGridTextColumn Binding="{Binding Email}"
+               
+              
+                <DataGridTextColumn Binding="{Binding ProductName}"
 					Width="*"
                                               />
 
                 <DataGridTemplateColumn Width="150">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="Adatlap"
-                                    Command="{Binding DataContext.CustomerProfileCommand, 
+                            <Button Content="Módosít"
+                                    Command="{Binding DataContext.EditProductCommand, 
                                         RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
                                     CommandParameter="{Binding}"
                                     Margin="5" />

@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Zza.Data;
 using HeinboDesktop.Services;
 
-namespace HeinboDesktop.Customers
+namespace HeinboDesktop.Products
 {
-    class AddEditCustomerViewModel : BindableBase
+    class AddEditProductViewModel : BindableBase
     {
-        private ICustomersRepository _repo;
-        public AddEditCustomerViewModel(ICustomersRepository repo)
+        private IProductService _repo;
+        public AddEditProductViewModel(IProductService repo)
         {
             _repo = repo;
             CancelCommand = new RelayCommand(OnCancel);
@@ -25,22 +25,22 @@ namespace HeinboDesktop.Customers
             set { SetProperty(ref _EditMode, value); }
         }
 
-        private SimpleEditableCustomer _Customer;
-        public SimpleEditableCustomer Customer
+        private SimpleEditableProduct _Product;
+        public SimpleEditableProduct Product
         {
-            get { return _Customer; }
-            set { SetProperty(ref _Customer, value); }
+            get { return _Product; }
+            set { SetProperty(ref _Product, value); }
         }
 
         private Product _editingCustomer = null;
 
-        public void SetCustomer(Product cust)
+        public void SetCustomer(Product product)
         {
-            _editingCustomer = cust;
-            if (Customer != null) Customer.ErrorsChanged -= RaiseCanExecuteChanged;
-            Customer = new SimpleEditableCustomer();
-            Customer.ErrorsChanged += RaiseCanExecuteChanged; 
-            CopyCustomer(cust, Customer);
+            _editingCustomer = product;
+        
+            Product = new SimpleEditableProduct();
+         
+            CopyProduct(product, Product);
         }
 
         private void RaiseCanExecuteChanged(object sender, EventArgs e)
@@ -61,15 +61,15 @@ namespace HeinboDesktop.Customers
 
         private async void OnSave()
         {
-            UpdateCustomer(Customer, _editingCustomer);
+            UpdateProduct(Product, _editingCustomer);
             if (EditMode)
-                await _repo.UpdateCustomerAsync(_editingCustomer);
+                await _repo.UpdateProduct(_editingCustomer);
             else
-                await _repo.AddCustomerAsync(_editingCustomer);
+                await _repo.AddProduct(_editingCustomer);
             Done();
         }
 
-        private void UpdateCustomer(SimpleEditableCustomer source, Product target)
+        private void UpdateProduct(SimpleEditableProduct source, Product target)
         {
             target.ProductName = source.ProductName;
             target.Category = source.Category;
@@ -79,12 +79,13 @@ namespace HeinboDesktop.Customers
            
         }
 
+
         private bool CanSave()
         {
-            return !Customer.HasErrors;
+            return true;
         }
 
-        private void CopyCustomer(Product source, SimpleEditableCustomer target)
+        private void CopyProduct(Product source, SimpleEditableProduct target)
         {
             target.Id = source.ProductId;
             if (EditMode)

@@ -1,0 +1,77 @@
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:Data="clr-namespace:Heinbo.Data;assembly=Heinbo.Data"
+           
+             x:Class="HeinboDesktop.Orders.OrderProfileView"
+             mc:Ignorable="d" Height="245" Width="565">
+  
+    <Grid Margin="-45,-20,-15,45">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <DataGrid ItemsSource="{Binding OrderItems}"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False" Margin="365,22,55,84">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Product.ProductId}"
+                                Header="Id" />
+                <DataGridTextColumn Binding="{Binding Product.ProductName}"
+                                Header="Termék" />
+                <DataGridTextColumn Binding="{Binding Quantity}"
+                                Header="Mennyiség" />
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid x:Name="grid1" DataContext="{Binding Order}" HorizontalAlignment="Left" Margin="70,28,0,0" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="Order Date:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <Label x:Name="orderDateLabel" Content="{Binding OrderDate}" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <Label Content="Order Id:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
+            <Label x:Name="orderIdLabel" Content="{Binding OrderId}" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
+            <Label Content="Order Status:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
+            <ComboBox x:Name="orderStatusComboBox" Grid.Column="1" DisplayMemberPath="OrderStatus" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding OrderStatus}" Margin="3" Grid.Row="2" VerticalAlignment="Center" Width="120">
+                <ComboBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel/>
+                    </ItemsPanelTemplate>
+                </ComboBox.ItemsPanel>
+            </ComboBox>
+            <Label Content="Total Price:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
+            <TextBox x:Name="totalPriceTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="3" Text="{Binding TotalPrice, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="Várárló" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
+            <Label x:Name="userIdLabel" Content="{Binding User}" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Button Content="Vissza"
+                    Command="{Binding CancelCommand}"
+                    HorizontalAlignment="Left"
+                    Margin="70,1,0,0"
+                    VerticalAlignment="Top"
+                    Width="75" />
+        </Grid>
+    </Grid>
+</UserControl>

@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace HeinboDesktop.Customers
+namespace HeinboDesktop.Products
 {
     /// <summary>
-    /// Interaction logic for AddEditCustomerView.xaml
+    /// Interaction logic for AddEditProductView.xaml
     /// </summary>
-    public partial class AddEditCustomerView : UserControl
+    public partial class AddEditProductView : UserControl
     {
-        public AddEditCustomerView()
+        public AddEditProductView()
         {
             InitializeComponent();
         }
