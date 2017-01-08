@@ -7,10 +7,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <i:Interaction.Triggers>
-      <i:EventTrigger EventName="Loaded">
-        <ei:CallMethodAction TargetObject="{Binding}" 
-                   MethodName="GetAspNetUsersList"/>
-      </i:EventTrigger>
+        <i:EventTrigger EventName="Loaded">
+            <ei:CallMethodAction TargetObject="{Binding}" MethodName="GetAspNetUsersList"/>
+        </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid>
         <Grid.RowDefinitions>
@@ -49,7 +48,7 @@
                         <DataTemplate>
                             <Button Content="Adatlap"
                                     Command="{Binding DataContext.CustomerProfileCommand, 
-                                    RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                        RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
                                     CommandParameter="{Binding}"
                                     Margin="5" />
                         </DataTemplate>

@@ -7,7 +7,7 @@
              mc:Ignorable="d"
              d:DesignHeight="300"
              d:DesignWidth="300">
-   
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -70,62 +70,32 @@
                      Height="23"
                      Margin="3"
                      Grid.Row="2"
-                     Text="{Binding RetailPrice, ValidatesOnNotifyDataErrors=True}"
+                     Text="{Binding RetailPrice}"
                      VerticalAlignment="Center"
                      Width="120" />
-            <Label Content="Beszállítói ár:"
-                   Grid.Column="0"
-                   HorizontalAlignment="Left"
-                   Margin="3"
-                   Grid.Row="3"
-                   VerticalAlignment="Center" />
-            <TextBox x:Name="supplerPriceTextbox"
-                     Grid.Column="1"
-                     HorizontalAlignment="Left"
-                     Height="23"
-                     Margin="3"
-                     Grid.Row="3"
-                     Text="{Binding SupplierPrice, ValidatesOnNotifyDataErrors=True}"
-                     VerticalAlignment="Center"
-                     Width="120" />
-            <Label Content="Nagyker ár:"
-                Grid.Column="0"
-                HorizontalAlignment="Left"
-                Margin="3,42,0,-36"
-                Grid.Row="3"
-                VerticalAlignment="Center" RenderTransformOrigin="0.494,1.769" />
-            <TextBox x:Name="wholeSalePriceTextbox"
-                Grid.Column="1"
-                HorizontalAlignment="Left"
-                Height="24"
-                Margin="5,44,0,-36"
-                Grid.Row="3"
-                Text="{Binding WholeSalePrice, ValidatesOnNotifyDataErrors=True}"
-                VerticalAlignment="Center"
-                Width="120" />
             <Label Content="Márka:"
                 Grid.Column="0"
                 HorizontalAlignment="Left"
-                Margin="3,73,0,-67"
+                Margin="3,15,0,-9"
                 Grid.Row="3"
                 VerticalAlignment="Center" RenderTransformOrigin="0.494,1.769" />
             <Label Content="Méret:"
                 Grid.Column="0"
                 HorizontalAlignment="Left"
-                Margin="3,104,0,-98"
+                Margin="3,46,0,-40"
                 Grid.Row="3"
                 VerticalAlignment="Center" RenderTransformOrigin="0.494,1.769" />
             <Label Content="Alkategória:"
                 Grid.Column="0"
                 HorizontalAlignment="Left"
-                Margin="3,135,0,-129"
+                Margin="3,77,0,-71"
                 Grid.Row="3"
                 VerticalAlignment="Center" RenderTransformOrigin="0.494,1.769" />
             <TextBox x:Name="phoneTextBox_Copy1"
                 Grid.Column="1"
                 HorizontalAlignment="Left"
                 Height="24"
-                Margin="5,75,0,-67"
+                Margin="5,17,0,-9"
                 Grid.Row="3"
                 Text="{Binding Brand, ValidatesOnNotifyDataErrors=True}"
                 VerticalAlignment="Center"
@@ -134,7 +104,7 @@
                 Grid.Column="1"
                 HorizontalAlignment="Left"
                 Height="24"
-                Margin="3,106,0,-98"
+                Margin="3,48,0,-40"
                 Grid.Row="3"
                 Text="{Binding Size, ValidatesOnNotifyDataErrors=True}"
                 VerticalAlignment="Center"
@@ -143,13 +113,13 @@
                 Grid.Column="1"
                 HorizontalAlignment="Left"
                 Height="24"
-                Margin="3,137,0,-129"
+                Margin="3,79,0,-71"
                 Grid.Row="3"
                 Text="{Binding Subcategory, ValidatesOnNotifyDataErrors=True}"
                 VerticalAlignment="Center"
                 Width="120" />
         </Grid>
-        <Grid Grid.Row="1">
+        <Grid Margin="-10,98,10,10">
             <Button Content="Mentés"
                     Command="{Binding SaveCommand}"
                     Visibility="{Binding EditMode}"

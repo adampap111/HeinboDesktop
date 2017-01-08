@@ -37,8 +37,10 @@ namespace HeinboDesktop.Customers
         public void SetCustomer(AspNetUsers cust)
         {
             _editingCustomer = cust;
-                     Customer = new CustomerProfile();
-                       CopyCustomer(cust, Customer);
+            if (Customer != null) Customer.ErrorsChanged -= RaiseCanExecuteChanged;
+            Customer = new CustomerProfile();
+            Customer.ErrorsChanged += RaiseCanExecuteChanged; 
+            CopyCustomer(cust, Customer);
         }
 
         private void RaiseCanExecuteChanged(object sender, EventArgs e)
@@ -64,6 +66,7 @@ namespace HeinboDesktop.Customers
             if (EditMode)
             {
                 target.Name = source.LastName + " " + source.FirstName;                
+               
                 target.Email = source.Email;
                 target.PhoneNumber = source.PhoneNumber;
                 target.City = source.City;

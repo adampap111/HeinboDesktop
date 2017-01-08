@@ -32,11 +32,11 @@ namespace HeinboDesktop.Products
             set { SetProperty(ref _Product, value); }
         }
 
-        private Product _editingCustomer = null;
+        private Product _editingProduct = null;
 
-        public void SetCustomer(Product product)
+        public void SetProduct(Product product)
         {
-            _editingCustomer = product;
+            _editingProduct = product;
         
             Product = new SimpleEditableProduct();
          
@@ -61,11 +61,11 @@ namespace HeinboDesktop.Products
 
         private async void OnSave()
         {
-            UpdateProduct(Product, _editingCustomer);
+            UpdateProduct(Product, _editingProduct);
             if (EditMode)
-                await _repo.UpdateProduct(_editingCustomer);
+                await _repo.UpdateProduct(_editingProduct);
             else
-                await _repo.AddProduct(_editingCustomer);
+                await _repo.AddProduct(_editingProduct);
             Done();
         }
 
@@ -95,6 +95,7 @@ namespace HeinboDesktop.Products
                 target.Brand = source.Brand;
                 target.Subcategory = source.SubCategory;
                 target.Size = source.Size;
+                target.RetailPrice = source.Price;
                
             }
         }

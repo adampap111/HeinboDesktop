@@ -27,7 +27,7 @@ namespace HeinboDesktop
             //product
             _productListViewModel = ContainerHelper.Container.Resolve<ProductListViewModel>();
             _addEditViewModel = ContainerHelper.Container.Resolve<AddEditProductViewModel>();
-            _productListViewModel.AddCustomerRequested += NavToAddCustomer;
+            _productListViewModel.AddProductRequested += NavToAddCustomer;
             _productListViewModel.EditProductRequested += NavToEditProduct;
             _addEditViewModel.Done += NavToProductList;
             //customer
@@ -67,17 +67,17 @@ namespace HeinboDesktop
             }
         }
 
-        private void NavToAddCustomer(Product cust)
+        private void NavToAddCustomer(Product product)
         {
             _addEditViewModel.EditMode = false;
-            _addEditViewModel.SetCustomer(cust);
+            _addEditViewModel.SetProduct(product);
             CurrentViewModel = _addEditViewModel;
         }
 
         private void NavToEditProduct(Product producct)
         {
             _addEditViewModel.EditMode = true;
-            _addEditViewModel.SetCustomer(producct);
+            _addEditViewModel.SetProduct(producct);
             CurrentViewModel = _addEditViewModel;
         }
 

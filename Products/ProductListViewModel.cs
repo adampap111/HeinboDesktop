@@ -24,7 +24,7 @@ namespace HeinboDesktop.Products
         }
 
         private ObservableCollection<Product> _products;
-        public ObservableCollection<Product> Customers
+        public ObservableCollection<Product> Products
         {
             get { return _products; }
             set { SetProperty(ref _products, value); }
@@ -36,20 +36,20 @@ namespace HeinboDesktop.Products
             set
             {
                 SetProperty(ref _SearchInput, value);
-                FilterCustomers(_SearchInput);
+                FilterProduct(_SearchInput);
             }
         }
 
-        private void FilterCustomers(string searchInput)
+        private void FilterProduct(string searchInput)
         {
             if (string.IsNullOrWhiteSpace(searchInput))
             {
-                Customers = new ObservableCollection<Product>(_allProducts);
+                Products = new ObservableCollection<Product>(_allProducts);
                 return;
             }
             else
             {
-                Customers = new ObservableCollection<Product>(_allProducts.Where(c => c.ProductName.ToLower().Contains(searchInput.ToLower())));
+                Products = new ObservableCollection<Product>(_allProducts.Where(c => c.ProductName.ToLower().Contains(searchInput.ToLower())));
             }
         }
 
@@ -59,25 +59,25 @@ namespace HeinboDesktop.Products
         public RelayCommand ClearSearchCommand { get; private set; }
 
         public event Action<int> PlaceOrderRequested = delegate { };
-        public event Action<Product> AddCustomerRequested = delegate { };
+        public event Action<Product> AddProductRequested = delegate { };
         public event Action<Product> EditProductRequested = delegate { };
 
 
         public async void GetProductList()
         {
             _allProducts = await _repo.GetProducts();
-            Customers = new ObservableCollection<Product>(_allProducts);
+            Products = new ObservableCollection<Product>(_allProducts);
 
         }
 
-        private void OnPlaceOrder(Product customer)
+        private void OnPlaceOrder(Product product)
         {
-            PlaceOrderRequested(customer.ProductId);
+            PlaceOrderRequested(product.ProductId);
         }
 
         private void OnAddProduct()
         {
-            AddCustomerRequested(new Product { ProductId = 33 });
+            AddProductRequested(new Product { ProductId = 33 });
 
         }
         private void OnEditProduct(Product cust)

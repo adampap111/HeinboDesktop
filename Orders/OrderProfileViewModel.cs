@@ -49,7 +49,7 @@ namespace HeinboDesktop.Orders
           
             Order = new OrderProfile();
           
-            CopyCustomer(order, Order);
+            CopyOrder(order, Order);
         }
 
         private void RaiseCanExecuteChanged(object sender, EventArgs e)
@@ -69,7 +69,7 @@ namespace HeinboDesktop.Orders
         }
 
 
-        private void CopyCustomer(Order source, OrderProfile target)
+        private void CopyOrder(Order source, OrderProfile target)
         {
             target.OrderId = source.OrderId;
             if (EditMode)
